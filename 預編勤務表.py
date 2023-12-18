@@ -78,9 +78,9 @@ class state(tk.Frame):
         self.grid()
         self.createWidgets()
         self.master.title('預編勤務表')
-        self.master.geometry("800x600")
-        self.master.minsize(800, 600)
-        self.master.maxsize(800, 600)
+        self.master.geometry("780x780")
+        self.master.minsize(800, 800)
+        self.master.maxsize(800, 800)
 
     def day_create(self):
         # 獲取使用者輸入的usr_name和
@@ -92,6 +92,9 @@ class state(tk.Frame):
         StartPage.driver.find_element('xpath', '//*[@id="btnCreateGroup"]').click()
 
     def ntsp(self):
+        StartPage.driver.find_element('xpath', '//*[@id="btnSetVacation"]').click()
+        
+        
         self.destroy()
         self.master.switch_frame(state)
 
@@ -99,16 +102,22 @@ class state(tk.Frame):
 
     def createWidgets(self):
         # 創造可以用place的背景
-        self.background = tk.Canvas(self, height=600, width=800, bg='white').pack()
+        self.background = tk.Canvas(self, height=800, width=800, bg='white').pack()
         tk.Label(self, text='誰休息?', font=('KaiTi', 40), bg='white').place(x=380, y=25)
         tk.Label(self, text='日期:', font=('KaiTi', 26), bg='white').place(x=25, y=100)
         self.entry_day = tk.StringVar()
         tk.Entry(self, bg='white', textvariable=self.entry_day, font=('KaiTi', 26)).place(x=150, y=100)
         tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=150)
         tk.Label(self, text='輪休:', font=('KaiTi', 26), bg='white').place(x=25, y=250)
-        self.entry_usr_pass = tk.StringVar()
-        tk.Entry(self, bg='white', textvariable=self.entry_usr_pass, font=('KaiTi', 26)).place(x=150, y=150)
-        tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=650, y=450)
+        self.entry_vac = tk.StringVar()
+        tk.Entry(self, bg='white', textvariable=self.entry_vac, font=('KaiTi', 26)).place(x=150, y=250)
+        tk.Label(self, text='外宿:', font=('KaiTi', 26), bg='white').place(x=25, y=400)
+        self.entry_vac = tk.StringVar()
+        tk.Entry(self, bg='white', textvariable=self.entry_vac, font=('KaiTi', 26)).place(x=150, y=400)
+        tk.Label(self, text='帶隊官:', font=('KaiTi', 26), bg='white').place(x=25, y=650)
+        self.entry_cmd = tk.StringVar()
+        tk.Entry(self, bg='white', textvariable=self.entry_cmd, font=('KaiTi', 26)).place(x=150, y=650)
+        tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=650, y=700)
 
 
 if __name__ == "__main__":
