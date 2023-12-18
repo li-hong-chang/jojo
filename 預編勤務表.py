@@ -30,8 +30,7 @@ class StartPage(tk.Frame):
 
     def usr_login(self):
         # 獲取使用者輸入的usr_name和
-        usr_name = self.entry_usr_name.get()
-        usr_pass = self.entry_usr_pass.get()
+        url = self.entry_usr_name.get()
         usr_name = '洪文政'
         usr_pass = 'Vv22962640..'
         '''StartPage.name = usr_name'''
@@ -39,7 +38,7 @@ class StartPage(tk.Frame):
         my_option.add_argument('--incognito')
         # my_option.add_argument('--headless')
         my_option.add_argument("--disable-notifications")
-        service = Service(executable_path=r'C:/Program Files/Chromedriver/chromedriver.exe')
+        service = Service(executable_path=url)
         StartPage.driver = webdriver.Chrome(service=service, options=my_option)
         StartPage.driver.get('http://172.28.16.66:8078/login.aspx') # 開啟
         time.sleep(6)
@@ -63,12 +62,9 @@ class StartPage(tk.Frame):
         # 創造可以用place的背景
         self.background = tk.Canvas(self, height=600, width=800, bg='white').pack()
         tk.Label(self, text='輸入', font=('KaiTi', 40), bg='white').place(x=380, y=25)
-        tk.Label(self, text='帳號:', font=('KaiTi', 26), bg='white').place(x=25, y=100)
-        tk.Label(self, text='密碼:', font=('KaiTi', 26), bg='white').place(x=25, y=150)
+        tk.Label(self, text='driver位置:', font=('KaiTi', 26), bg='white').place(x=25, y=100)
         self.entry_usr_name = tk.StringVar()
-        tk.Entry(self, bg='white', textvariable=self.entry_usr_name, font=('KaiTi', 26)).place(x=150, y=100)
-        self.entry_usr_pass = tk.StringVar()
-        tk.Entry(self, bg='white', textvariable=self.entry_usr_pass, font=('KaiTi', 26)).place(x=150, y=150)
+        tk.Entry(self, bg='white', textvariable=self.entry_usr_name, font=('KaiTi', 26)).place(x=150, y=150)
         tk.Button(self, text='登入', bg='#ffcc69', font=('KaiTi', 20), command=self.usr_login).place(x=380, y=450)
         tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=650, y=450)
 
@@ -83,10 +79,6 @@ class state(tk.Frame):
         self.master.maxsize(800, 800)
 
     def day_create(self):
-        # 獲取使用者輸入的usr_name和
-        usr_day = self.entry_day.get()
-        usr_pass = self.entry_usr_pass.get()
-        '''StartPage.name = usr_name'''
         StartPage.driver.find_element('xpath', '//*[@id="listDay"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listDay"]/option[' + usr_day + ']').click()
         StartPage.driver.find_element('xpath', '//*[@id="btnCreateGroup"]').click()
@@ -103,10 +95,10 @@ class state(tk.Frame):
     def createWidgets(self):
         # 創造可以用place的背景
         self.background = tk.Canvas(self, height=800, width=800, bg='white').pack()
-        tk.Label(self, text='誰休息?', font=('KaiTi', 40), bg='white').place(x=380, y=25)
-        tk.Label(self, text='日期:', font=('KaiTi', 26), bg='white').place(x=25, y=100)
+        tk.Label(self, text='誰休息?', font=('KaiTi', 40), bg='white').place(x=350, y=25)
+        tk.Label(self, text='日期(幾號):', font=('KaiTi', 26), bg='white').place(x=25, y=100)
         self.entry_day = tk.StringVar()
-        tk.Entry(self, bg='white', textvariable=self.entry_day, font=('KaiTi', 26)).place(x=150, y=100)
+        tk.Entry(self, bg='white', textvariable=self.entry_day, font=('KaiTi', 26)).place(x=230, y=100)
         tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=150)
         tk.Label(self, text='輪休:', font=('KaiTi', 26), bg='white').place(x=25, y=250)
         self.entry_vac = tk.StringVar()
@@ -114,9 +106,9 @@ class state(tk.Frame):
         tk.Label(self, text='外宿:', font=('KaiTi', 26), bg='white').place(x=25, y=400)
         self.entry_vac = tk.StringVar()
         tk.Entry(self, bg='white', textvariable=self.entry_vac, font=('KaiTi', 26)).place(x=150, y=400)
-        tk.Label(self, text='帶隊官:', font=('KaiTi', 26), bg='white').place(x=25, y=650)
+        tk.Label(self, text='帶隊官:', font=('KaiTi', 26), bg='white').place(x=25, y=550)
         self.entry_cmd = tk.StringVar()
-        tk.Entry(self, bg='white', textvariable=self.entry_cmd, font=('KaiTi', 26)).place(x=150, y=650)
+        tk.Entry(self, bg='white', textvariable=self.entry_cmd, font=('KaiTi', 26)).place(x=150, y=550)
         tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=650, y=700)
 
 
