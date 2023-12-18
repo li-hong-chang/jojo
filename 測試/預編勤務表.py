@@ -9,6 +9,7 @@ class SampleApp(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
         self._frame = None
+        
         self.switch_frame(StartPage)
 
     def switch_frame(self, frame_class):
@@ -41,7 +42,7 @@ class StartPage(tk.Frame):
         service = Service(executable_path=url)
         StartPage.driver = webdriver.Chrome(service=service, options=my_option)
         StartPage.driver.get('http://172.28.16.66:8078/login.aspx') # 開啟
-        time.sleep(6)
+        time.sleep(5)
         name_box = StartPage.driver.find_element('xpath', '//*[@id="txt_ac"]')
         pass_box = StartPage.driver.find_element('xpath', '//*[@id="txt_pwd"]')
         name_box.send_keys(usr_name)
@@ -62,9 +63,9 @@ class StartPage(tk.Frame):
         # 創造可以用place的背景
         self.background = tk.Canvas(self, height=600, width=800, bg='white').pack()
         tk.Label(self, text='輸入', font=('KaiTi', 40), bg='white').place(x=380, y=25)
-        tk.Label(self, text='driver位置:', font=('KaiTi', 26), bg='white').place(x=25, y=100)
+        tk.Label(self, text='位置:', font=('KaiTi', 26), bg='white').place(x=25, y=100)
         self.entry_usr_name = tk.StringVar()
-        tk.Entry(self, bg='white', textvariable=self.entry_usr_name, font=('KaiTi', 26)).place(x=150, y=150)
+        tk.Entry(self, bg='white', textvariable=self.entry_usr_name, font=('KaiTi', 26)).place(x=230, y=100)
         tk.Button(self, text='登入', bg='#ffcc69', font=('KaiTi', 20), command=self.usr_login).place(x=380, y=450)
         tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=650, y=450)
 
