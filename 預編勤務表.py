@@ -97,7 +97,7 @@ class state(tk.Frame):
 
 
 
-   def createWidgets(self):
+    def createWidgets(self):
         # 創造可以用place的背景
         self.background = tk.Canvas(self, height=600, width=800, bg='white').pack()
         tk.Label(self, text='誰休息?', font=('KaiTi', 40), bg='white').place(x=380, y=25)
