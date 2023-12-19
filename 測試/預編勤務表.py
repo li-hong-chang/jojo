@@ -18,7 +18,7 @@ class SampleApp(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
         self._frame = None
-        
+
         self.switch_frame(StartPage)
 
     def switch_frame(self, frame_class):
@@ -46,7 +46,7 @@ class StartPage(tk.Frame):
         '''StartPage.name = usr_name'''
         my_option = webdriver.ChromeOptions()
         my_option.add_argument('--incognito')
-        # my_option.add_argument('--headless')
+        my_option.add_argument('--no-sandingbox')
         my_option.add_argument("--disable-notifications")
         service = Service(executable_path=url)
         StartPage.driver = webdriver.Chrome(service=service, options=my_option)
@@ -97,6 +97,9 @@ class state(tk.Frame):
         StartPage.driver.find_element('xpath', '//*[@id="btnSetVacation"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]/option[13]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="btnSetVacation"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_12"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_12"]/option[13]').click()
         #輪休ing
         vac = self.entry_vac.get().split('.')
         for i in vac:
@@ -110,7 +113,7 @@ class state(tk.Frame):
         StartPage.driver.find_element('xpath', '//*[@id="btnVacationSave"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listLeader"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listLeader"]/option[' + leader[self.entry_out.get()] + ']').click()
-        time.sleep(5)
+        time.sleep(6)
         StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]/option[3]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
@@ -167,13 +170,33 @@ class working(tk.Frame):
         self.master.maxsize(800, 800)
 
     def day_create(self):
-        num = self.entry_vac.get()
+        person = self.entry_vac.get().split()
+        for i in person:
+          StartPage.driver.find_element('xpath', '//*[@id="listFireMan_ctrl' + str(c_mem[i]//5) + '_chkManCar_' + c_mem[i] + '"]'').click()
+        num = self.entry_day.get()
         StartPage.driver.find_element('xpath', '//*[@id="gridGroupFightMan_rdoItemName_' + num + '"]').click()
+        car = self.entry_out.get()
+        if car == '11':
+          StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl0_chkManCar_0"]').click()
+        elif car == '16':
+          StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl0_chkManCar_1"]').click()
+        elif car == '31':
+          StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl0_chkManCar_3"]').click()
+        elif car == '93':
+          StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl1_chkManCar_11"]').click()
+        elif car == '92':
+          StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl1_chkManCar_10"]').click()
+        else:
+          StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl2_chkManCar_13"]').click()
+        time.sleep(0.5)
         hour = self.entry_cmd.get().split()
         for i in range(int(hour[0]), int(hour[1])):
           StartPage.driver.find_element('xpath', '//*[@id="gridGroupFightMan_Button' + str(i) + '"]').click()
-        
-        
+          time.sleep(0.5)
+        StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
+
+
 
     def ntsp(self):
         StartPage.driver.find_element('xpath', '//*[@id="btnSetVacation"]').click()
