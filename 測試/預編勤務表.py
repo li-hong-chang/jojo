@@ -97,12 +97,12 @@ class state(tk.Frame):
         StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]/option[13]').click()
         #輪休ing
-        vac = self.entry_vac.get().split()
+        vac = self.entry_vac.get().split('.')
         for i in vac:
             StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[2]').click()
         # 外宿ing
-        out = self.entry_out.get.split()
+        out = self.entry_out.get.split('.')
         for i in out:
             StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[14]').click()
@@ -124,10 +124,10 @@ class state(tk.Frame):
         self.entry_day = tk.StringVar()
         tk.Entry(self, bg='white', textvariable=self.entry_day, font=('KaiTi', 26)).place(x=230, y=100)
         tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=150)
-        tk.Label(self, text='輪休\n用空白分開:', font=('KaiTi', 26), bg='white').place(x=25, y=250)
+        tk.Label(self, text='輪休\n用.分開:', font=('KaiTi', 26), bg='white').place(x=25, y=250)
         self.entry_vac = tk.StringVar()
         tk.Entry(self, bg='white', textvariable=self.entry_vac, font=('KaiTi', 26)).place(x=150, y=250)
-        tk.Label(self, text='外宿\n用空白分開:', font=('KaiTi', 26), bg='white').place(x=25, y=400)
+        tk.Label(self, text='外宿\n用.分開:', font=('KaiTi', 26), bg='white').place(x=25, y=400)
         self.entry_out = tk.StringVar()
         tk.Entry(self, bg='white', textvariable=self.entry_out, font=('KaiTi', 26)).place(x=150, y=400)
         tk.Label(self, text='帶隊官:', font=('KaiTi', 26), bg='white').place(x=25, y=550)
