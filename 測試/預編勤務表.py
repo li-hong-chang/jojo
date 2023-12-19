@@ -12,6 +12,7 @@ mem = {'A': '洪文政', 'B': '陳信宏', 'C': '曾英傑', 'D': '蔡孟洲', '
 c_mem = {'A': '0', 'B': '1', 'C': '2', 'D': '3', '101': '4', '102': '5', '103': '6', '104': '7', '105': '8', '106': '9', '107': '10', '108': '11',
       '109': '12', '110': '13', '111': '14', '112': '15', '113': '16', '201': '17', '202': '18', '203': '19', '204': '20', '205': '21', '206': '22',
       '207': '23', '208': '24', '209': '25', '210': '26', '211': '27', '212': '28', '301': '29', '302': '30', '303': '31', '304': '32', '305': '33'}
+leader = {'A': '11', 'B': '2', 'C': '8', 'D': '10'}
 
 class SampleApp(tk.Tk):
     def __init__(self):
@@ -102,19 +103,69 @@ class state(tk.Frame):
             StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[2]').click()
         # 外宿ing
-        out = self.entry_out.get.split('.')
+        out = self.entry_out.get().split('.')
         for i in out:
             StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[14]').click()
         StartPage.driver.find_element('xpath', '//*[@id="btnVacationSave"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listLeader"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listLeader"]/option[' + leader[self.entry_out.get()] + ']').click()
+        self.destroy()
+        self.master.switch_frame(working)
+
+    def createWidgets(self):
+        # 創造可以用place的背景
+        self.background = tk.Canvas(self, height=800, width=800, bg='white').pack()
+        tk.Label(self, text='誰休息?', font=('KaiTi', 40), bg='white').place(x=350, y=25)
+        tk.Label(self, text='日期(幾號):', font=('KaiTi', 26), bg='white').place(x=25, y=100)
+        self.entry_day = tk.StringVar()
+        tk.Entry(self, bg='white', textvariable=self.entry_day, font=('KaiTi', 26)).place(x=230, y=100)
+        tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=150)
+        tk.Label(self, text='輪休\n用.分開:', font=('KaiTi', 26), bg='white').place(x=25, y=250)
+        self.entry_vac = tk.StringVar()
+        tk.Entry(self, bg='white', textvariable=self.entry_vac, font=('KaiTi', 26)).place(x=150, y=250)
+        tk.Label(self, text='外宿\n用.分開:', font=('KaiTi', 26), bg='white').place(x=25, y=400)
+        self.entry_out = tk.StringVar()
+        tk.Entry(self, bg='white', textvariable=self.entry_out, font=('KaiTi', 26)).place(x=150, y=400)
+        tk.Label(self, text='帶隊官:', font=('KaiTi', 26), bg='white').place(x=25, y=550)
+        self.entry_cmd = tk.StringVar()
+        tk.Entry(self, bg='white', textvariable=self.entry_cmd, font=('KaiTi', 26)).place(x=150, y=550)
+        tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=650, y=700)
+
+class working(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self)
+        self.grid()
+        self.createWidgets()
+        self.master.title('預編勤務表')
+        self.master.geometry("780x780")
+        self.master.minsize(800, 800)
+        self.master.maxsize(800, 800)
+
+    def day_create(self):
+        StartPage.driver.find_element('xpath', '//*[@id="listDay"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listDay"]/option[' + usr_day + ']').click()
+        StartPage.driver.find_element('xpath', '//*[@id="btnCreateGroup"]').click()
+
+    def ntsp(self):
+        StartPage.driver.find_element('xpath', '//*[@id="btnSetVacation"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]/option[13]').click()
+        #輪休ing
+        vac = self.entry_vac.get().split('.')
+        for i in vac:
+            StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[2]').click()
+        # 外宿ing
+        out = self.entry_out.get().split('.')
+        for i in out:
+            StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[14]').click()
         StartPage.driver.find_element('xpath', '//*[@id="btnVacationSave"]').click()
-        //*[@id="listLeader"]/option[2]
-        //*[@id="listLeader"]/option[11]
+        StartPage.driver.find_element('xpath', '//*[@id="listLeader"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listLeader"]/option[' + leader[self.entry_out.get()] + ']').click()
         self.destroy()
         self.master.switch_frame(state)
-
-
 
     def createWidgets(self):
         # 創造可以用place的背景
