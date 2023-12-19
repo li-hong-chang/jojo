@@ -95,13 +95,22 @@ class state(tk.Frame):
     def ntsp(self):
         StartPage.driver.find_element('xpath', '//*[@id="btnSetVacation"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]/option[2]').click()
-        
-        //*[@id="gridVacation_listVacationType_0"]
-        # 輪休 //*[@id="gridVacation_listVacationType_0"]/option[2]
-        # 外宿 //*[@id="gridVacation_listVacationType_0"]/option[14]
-        //*[@id="gridVacation_listVacationType_11"]
-        
+        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]/option[13]').click()
+        #輪休ing
+        vac = self.entry_vac.get().split()
+        for i in vac:
+            StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[2]').click()
+        # 外宿ing
+        out = self.entry_out.get.split()
+        for i in out:
+            StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[14]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="btnVacationSave"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listLeader"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="btnVacationSave"]').click()
+        //*[@id="listLeader"]/option[2]
+        //*[@id="listLeader"]/option[11]
         self.destroy()
         self.master.switch_frame(state)
 
@@ -115,12 +124,12 @@ class state(tk.Frame):
         self.entry_day = tk.StringVar()
         tk.Entry(self, bg='white', textvariable=self.entry_day, font=('KaiTi', 26)).place(x=230, y=100)
         tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=150)
-        tk.Label(self, text='輪休:', font=('KaiTi', 26), bg='white').place(x=25, y=250)
+        tk.Label(self, text='輪休\n用空白分開:', font=('KaiTi', 26), bg='white').place(x=25, y=250)
         self.entry_vac = tk.StringVar()
         tk.Entry(self, bg='white', textvariable=self.entry_vac, font=('KaiTi', 26)).place(x=150, y=250)
-        tk.Label(self, text='外宿:', font=('KaiTi', 26), bg='white').place(x=25, y=400)
-        self.entry_vac = tk.StringVar()
-        tk.Entry(self, bg='white', textvariable=self.entry_vac, font=('KaiTi', 26)).place(x=150, y=400)
+        tk.Label(self, text='外宿\n用空白分開:', font=('KaiTi', 26), bg='white').place(x=25, y=400)
+        self.entry_out = tk.StringVar()
+        tk.Entry(self, bg='white', textvariable=self.entry_out, font=('KaiTi', 26)).place(x=150, y=400)
         tk.Label(self, text='帶隊官:', font=('KaiTi', 26), bg='white').place(x=25, y=550)
         self.entry_cmd = tk.StringVar()
         tk.Entry(self, bg='white', textvariable=self.entry_cmd, font=('KaiTi', 26)).place(x=150, y=550)
