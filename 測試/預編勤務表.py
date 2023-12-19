@@ -3,7 +3,6 @@ import tkinter.font as tkFont
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.keys import Keys
 
 class SampleApp(tk.Tk):
     def __init__(self):
