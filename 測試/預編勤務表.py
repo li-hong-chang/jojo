@@ -90,7 +90,7 @@ class state(tk.Frame):
 
     def day_create(self):
         StartPage.driver.find_element('xpath', '//*[@id="listDay"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listDay"]/option[' + usr_day + ']').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listDay"]/option[' + self.entry_day.get() + ']').click()
         StartPage.driver.find_element('xpath', '//*[@id="btnCreateGroup"]').click()
 
     def ntsp(self):
