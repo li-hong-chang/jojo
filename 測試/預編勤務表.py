@@ -172,7 +172,7 @@ class working(tk.Frame):
     def day_create(self):
         person = self.entry_vac.get().split('.')
         for i in person:
-            StartPage.driver.find_element('xpath', '//*[@id="listFireMan_ctrl' + str(c_mem[i]//5) + '_chkManCar_' + c_mem[i] + '"]'').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listFireMan_ctrl' + str(c_mem[i]//5) + '_chkManCar_' + c_mem[i] + '"]').click()
         num = self.entry_day.get()
         StartPage.driver.find_element('xpath', '//*[@id="gridGroupFightMan_rdoItemName_' + num + '"]').click()
         car = self.entry_out.get()
