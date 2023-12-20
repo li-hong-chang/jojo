@@ -223,6 +223,9 @@ class working(tk.Frame):
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[3]').click()
         StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('值班')
+        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
         #輪休ing
         vac = self.entry_day.get()
         for i in vac:
