@@ -45,7 +45,7 @@ class StartPage(tk.Frame):
         usr_pass = 'Vv22962640..'
         '''StartPage.name = usr_name'''
         my_option = webdriver.ChromeOptions()
-        my_option.add_argument('--incognito')
+        # my_option.add_argument('--incognito')
         my_option.add_argument('--no-sandingbox')
         my_option.add_argument("--disable-notifications")
         service = Service(executable_path=url)
