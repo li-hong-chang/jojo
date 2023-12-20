@@ -170,29 +170,29 @@ class working(tk.Frame):
         self.master.maxsize(800, 800)
 
     def day_create(self):
-        person = self.entry_vac.get().split()
+        person = self.entry_vac.get().split('.')
         for i in person:
-          StartPage.driver.find_element('xpath', '//*[@id="listFireMan_ctrl' + str(c_mem[i]//5) + '_chkManCar_' + c_mem[i] + '"]'').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listFireMan_ctrl' + str(c_mem[i]//5) + '_chkManCar_' + c_mem[i] + '"]'').click()
         num = self.entry_day.get()
         StartPage.driver.find_element('xpath', '//*[@id="gridGroupFightMan_rdoItemName_' + num + '"]').click()
         car = self.entry_out.get()
         if car == '11':
-          StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl0_chkManCar_0"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl0_chkManCar_0"]').click()
         elif car == '16':
-          StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl0_chkManCar_1"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl0_chkManCar_1"]').click()
         elif car == '31':
-          StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl0_chkManCar_3"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl0_chkManCar_3"]').click()
         elif car == '93':
-          StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl1_chkManCar_11"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl1_chkManCar_11"]').click()
         elif car == '92':
-          StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl1_chkManCar_10"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl1_chkManCar_10"]').click()
         else:
-          StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl2_chkManCar_13"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl2_chkManCar_13"]').click()
         time.sleep(0.5)
-        hour = self.entry_cmd.get().split()
+        hour = self.entry_cmd.get().split('.')
         for i in range(int(hour[0]), int(hour[1])):
-          StartPage.driver.find_element('xpath', '//*[@id="gridGroupFightMan_Button' + str(i) + '"]').click()
-          time.sleep(0.5)
+            StartPage.driver.find_element('xpath', '//*[@id="gridGroupFightMan_Button' + str(i) + '"]').click()
+            time.sleep(0.5)
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
 
