@@ -199,9 +199,30 @@ class working(tk.Frame):
 
 
     def ntsp(self):
-        StartPage.driver.find_element('xpath', '//*[@id="btnSetVacation"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]/option[13]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]/option[2]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemType"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemType"]/option[2]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('安檢系統建置、審核業務')
+        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemType"]/option[3]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemType"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[18]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[14]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[16]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[3]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
         #輪休ing
         vac = self.entry_day.get()
         for i in vac:
