@@ -118,22 +118,27 @@ class state(tk.Frame):
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
         # 打攻擊車
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[16]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('11')
         StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
         # 打水箱車
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[12]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('16')
         StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
         # 打31車
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[7]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('31')
         StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
         # 打91車
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[3]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('93')
         StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
         # 打92車
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('92')
         StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
         self.destroy()
