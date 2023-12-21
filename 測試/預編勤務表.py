@@ -97,7 +97,6 @@ class state(tk.Frame):
         StartPage.driver.find_element('xpath', '//*[@id="btnSetVacation"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]/option[13]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="btnSetVacation"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_12"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_12"]/option[13]').click()
         #輪休ing
