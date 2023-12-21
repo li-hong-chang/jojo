@@ -111,7 +111,7 @@ class state(tk.Frame):
             StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[14]').click()
         StartPage.driver.find_element('xpath', '//*[@id="btnVacationSave"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listLeader"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listLeader"]/option[' + leader[self.entry_out.get()] + ']').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listLeader"]/option[' + leader[self.entry_cmd.get()] + ']').click()
         time.sleep(6)
         StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]/option[3]').click()
