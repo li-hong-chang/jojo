@@ -98,7 +98,7 @@ class state(tk.Frame):
         StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]/option[13]').click()
         StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_12"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_12"]/option[13]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_12"]/option[2]').click()
         #輪休ing
         vac = self.entry_vac.get().split('.')
         for i in vac:
@@ -225,21 +225,7 @@ class working(tk.Frame):
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
         StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('值班')
         StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
-        #輪休ing
-        vac = self.entry_day.get()
-        for i in vac:
-            StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[2]').click()
-        # 外宿ing
-        out = self.entry_out.get().split('.')
-        for i in out:
-            StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[14]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="btnVacationSave"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listLeader"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listLeader"]/option[' + leader[self.entry_out.get()] + ']').click()
-        self.destroy()
-        self.master.switch_frame(state)
+
 
     def createWidgets(self):
         # 創造可以用place的背景
