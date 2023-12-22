@@ -119,6 +119,7 @@ class state(tk.Frame):
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
         # 打攻擊車
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[16]').click()
+            time.sleep(1)
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('11')
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
@@ -126,6 +127,7 @@ class state(tk.Frame):
         # 打水箱車
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[12]').click()
+            time.sleep(0.5)
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('16')
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
@@ -134,7 +136,6 @@ class state(tk.Frame):
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[7]').click
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
-            time.sleep(0.5)
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('31')
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
             print(31)
@@ -142,7 +143,6 @@ class state(tk.Frame):
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[3]').click()
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
-            time.sleep(0.5)
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('93')
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
             print(91)
