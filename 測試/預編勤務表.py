@@ -224,6 +224,7 @@ class working(tk.Frame):
         StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('安檢系統建置、審核業務')
         StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]').click()
@@ -241,6 +242,7 @@ class working(tk.Frame):
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[3]').click()
         StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]'). click ()
         StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('值班')
         StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
 
