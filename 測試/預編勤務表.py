@@ -115,6 +115,7 @@ class state(tk.Frame):
         time.sleep(6)
         try:
             StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]/option[3]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
         # 打攻擊車
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[16]').click()
