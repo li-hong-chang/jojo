@@ -119,20 +119,21 @@ class state(tk.Frame):
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
         # 打攻擊車
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[16]').click()
-            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('11')
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
             print(11)
         # 打水箱車
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[12]').click()
-            time.sleep(0.5)
+            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('16')
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
             print(16)
         # 打31車
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[7]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[7]').click
+            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
             time.sleep(0.5)
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('31')
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
@@ -140,6 +141,7 @@ class state(tk.Frame):
         # 打91車
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[3]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
             time.sleep(0.5)
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('93')
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
@@ -147,6 +149,7 @@ class state(tk.Frame):
         # 打92車
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
             time.sleep(0.5)
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('92')
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
@@ -188,7 +191,7 @@ class working(tk.Frame):
     def day_create(self):
         person = self.entry_vac.get().split('.')
         for i in person:
-            StartPage.driver.find_element('xpath', '//*[@id="listFireMan_ctrl' + str(c_mem[i]//5) + '_chkManCar_' + c_mem[i] + '"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listFireMan_ctrl' + str(int(c_mem[i]-1) // 6) + '_chkManCar_' + c_mem[i] + '"]').click()
         num = self.entry_day.get()
         StartPage.driver.find_element('xpath', '//*[@id="gridGroupFightMan_rdoItemName_' + num + '"]').click()
         car = self.entry_out.get()
