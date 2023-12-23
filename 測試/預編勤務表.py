@@ -3,6 +3,7 @@ import tkinter.font as tkFont
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from tkinter import ttk
 
 
 mem = {'A': '洪文政', 'B': '陳信宏', 'C': '曾英傑', 'D': '蔡孟洲', '101': '黃國峰', '102': '周家宇', '103': '林易進', '104': '吳信慧', '105': '郭霆宥',
@@ -103,10 +104,13 @@ class state(tk.Frame):
             StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[2]').click()
         # 外宿ing
-        out = self.entry_out.get().split('.')
-        for i in out:
-            StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[14]').click()
+        if self.entry_out.get() == '':
+            pass
+        else:
+            out = self.entry_out.get().split('.')
+            for i in out:
+                StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
+                StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[14]').click()
         StartPage.driver.find_element('xpath', '//*[@id="btnVacationSave"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listLeader"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listLeader"]/option[' + leader[self.entry_cmd.get()] + ']').click()
@@ -189,9 +193,10 @@ class working(tk.Frame):
     def day_create(self):
         person = self.entry_vac.get().split('.')
         for i in person:
-            StartPage.driver.find_element('xpath', '//*[@id="listFireMan_ctrl' + str(int(c_mem[i]-1) // 6) + '_chkManCar_' + c_mem[i] + '"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listFireMan_ctrl' + str(int(c_mem[i]) // 6) + '_chkManCar_' + c_mem[i] + '"]').click()
         num = self.entry_day.get()
         StartPage.driver.find_element('xpath', '//*[@id="gridGroupFightMan_rdoItemName_' + num + '"]').click()
+        time.sleep(0.5)
         car = self.entry_out.get()
         if car == '11':
             StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl0_chkManCar_0"]').click()
@@ -205,11 +210,19 @@ class working(tk.Frame):
             StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl1_chkManCar_10"]').click()
         else:
             StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl2_chkManCar_13"]').click()
-        time.sleep(0.5)
-        hour = self.entry_cmd.get().split('.')
-        for i in range(int(hour[0]), int(hour[1])):
-            StartPage.driver.find_element('xpath', '//*[@id="gridGroupFightMan_Button' + str(i) + '"]').click()
-            time.sleep(0.5)
+        start = self.entry_cmd.get()
+        fin = self.entry_fin.get()
+        if int(fin) < int(start):
+            for i in range(int(start), 24):
+                StartPage.driver.find_element('xpath', '//*[@id="gridGroupFightMan_Button' + str(i) + '"]').click()
+                time.sleep(0.5)
+            for i in range(0, int(fin)):
+                StartPage.driver.find_element('xpath', '//*[@id="gridGroupFightMan_Button' + str(i) + '"]').click()
+                time.sleep(0.5)
+        else:
+            for i in range(int(start), int(fin)):
+                StartPage.driver.find_element('xpath', '//*[@id="gridGroupFightMan_Button' + str(i) + '"]').click()
+                time.sleep(0.5)
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
 
@@ -224,6 +237,7 @@ class working(tk.Frame):
         StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
+        time.sleep(1)
         StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('安檢系統建置、審核業務')
         StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
@@ -242,6 +256,7 @@ class working(tk.Frame):
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[3]').click()
         StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
+        time.sleep(1)
         StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]'). click ()
         StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('值班')
         StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
@@ -260,9 +275,16 @@ class working(tk.Frame):
         tk.Label(self, text='車:', font=('KaiTi', 26), bg='white').place(x=25, y=400)
         self.entry_out = tk.StringVar()
         tk.Entry(self, bg='white', textvariable=self.entry_out, font=('KaiTi', 26)).place(x=150, y=400)
-        tk.Label(self, text='時間\n開始和結束\n用.分開:', font=('KaiTi', 26), bg='white').place(x=25, y=550)
-        self.entry_cmd = tk.StringVar()
-        tk.Entry(self, bg='white', textvariable=self.entry_cmd, font=('KaiTi', 26)).place(x=150, y=550)
+        tk.Label(self, text='開始時間:', font=('KaiTi', 26), bg='white').place(x=25, y=550)
+        self.entry_cmd = ttk.Combobox(font=('KaiTi', 26), values=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                                        '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+                                        '21', '22', '23', '24'], width=5, height=26)
+        self.entry_cmd.place(x=200, y=550)
+        tk.Label(self, text='結束時間:', font=('KaiTi', 26), bg='white').place(x=400, y=550)
+        self.entry_fin = ttk.Combobox(font=('KaiTi', 26), values=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                                        '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+                                        '21', '22', '23', '24'], width=5, height=26)
+        self.entry_fin.place(x=580, y=550)
         tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=700)
         tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=650, y=700)
 
