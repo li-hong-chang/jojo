@@ -19,7 +19,6 @@ class SampleApp(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
         self._frame = None
-
         self.switch_frame(StartPage)
 
     def switch_frame(self, frame_class):
@@ -100,6 +99,10 @@ class state(tk.Frame):
         StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]/option[13]').click()
         #輪休ing
         vac = self.entry_vac.get().split('.')
+        try:
+            vac.remove('401')
+        except:
+            pass
         for i in vac:
             StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[2]').click()
@@ -108,6 +111,10 @@ class state(tk.Frame):
             pass
         else:
             out = self.entry_out.get().split('.')
+            try:
+                out.remove('401')
+            except:
+                pass
             for i in out:
                 StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
                 StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[14]').click()
