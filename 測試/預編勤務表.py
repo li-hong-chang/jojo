@@ -281,7 +281,7 @@ class working(tk.Frame):
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click ()
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('值班')
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
-        excpet:
+        except:
             print('離隊編組失敗')
         self.destroy()
         self.master.switch_frame(leaving)
