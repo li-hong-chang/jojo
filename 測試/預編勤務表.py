@@ -238,7 +238,7 @@ class working(tk.Frame):
             for i in range(int(start), int(fin)):
                 StartPage.driver.find_element('xpath', '//*[@id="gridGroupFightMan_Button' + str(i) + '"]').click()
                 time.sleep(0.5)
-        time.sleep(1)
+        time.sleep(2)
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
@@ -364,7 +364,7 @@ class leaving(tk.Frame):
             for i in range(int(start), int(fin)):
                 StartPage.driver.find_element('xpath', '//*[@id="gridGroupWorkMan_Button' + str(i) + '"]').click()
                 time.sleep(0.5)
-        time.sleep(1)
+        time.sleep(2)
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
