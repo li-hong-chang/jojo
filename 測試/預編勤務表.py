@@ -238,48 +238,53 @@ class working(tk.Frame):
 
 
     def ntsp(self):
-        StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]/option[2]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="listItemType"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listItemType"]/option[2]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('安檢系統建置、審核業務')
-        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
-        time.sleep(0.5)
-        StartPage.driver.find_element('xpath', '//*[@id="listItemType"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listItemType"]/option[3]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[18]').click()
-        time.sleep(0.5)
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[14]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
-        time.sleep(0.5)
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[16]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
-        time.sleep(0.5)
-        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[3]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
-        time.sleep(0.5)
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click ()
-        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('值班')
-        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+        try:
+            StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]/option[2]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="listItemType"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemType"]/option[2]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('安檢系統建置、審核業務')
+            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+            time.sleep(0.5)
+            StartPage.driver.find_element('xpath', '//*[@id="listItemType"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemType"]/option[3]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[18]').click()
+            time.sleep(0.5)
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[14]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+            time.sleep(0.5)
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[16]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+            time.sleep(0.5)
+            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[3]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+            time.sleep(0.5)
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click ()
+            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('值班')
+            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+        excpet:
+            print('離隊編組失敗')
+        self.destroy()
+        self.master.switch_frame(leaving)
 
 
     def createWidgets(self):
@@ -307,6 +312,79 @@ class working(tk.Frame):
         self.entry_fin.place(x=580, y=550)
         tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=700)
         tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=650, y=700)
+
+class leaving(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self)
+        self.grid()
+        self.createWidgets()
+        self.master.title('預編勤務表')
+        self.master.geometry("780x780")
+        self.master.minsize(800, 800)
+        self.master.maxsize(800, 800)
+
+    def day_create(self):
+        person = self.entry_vac.get().split('.')
+        for i in person:
+            StartPage.driver.find_element('xpath', '//*[@id="listFireMan_ctrl' + str(int(c_mem[i]) // 6) + '_chkManCar_' + c_mem[i] + '"]').click()
+        num = self.entry_day.get()
+        StartPage.driver.find_element('xpath', '//*[@id="gridGroupWorkMan_rdoItemName_' + num + '"]').click()
+        time.sleep(0.5)
+        car = self.entry_out.get()
+        if car == '11':
+            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl0_chkManCar_0"]').click()
+        elif car == '16':
+            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl0_chkManCar_1"]').click()
+        elif car == '31':
+            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl0_chkManCar_2"]').click()
+        elif car == '93':
+            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl1_chkManCar_11"]').click()
+        elif car == '92':
+            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl1_chkManCar_10"]').click()
+        else:
+            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl2_chkManCar_13"]').click()
+        start = self.entry_cmd.get()
+        fin = self.entry_fin.get()
+        if int(fin) < int(start):
+            for i in range(int(start), 24):
+                StartPage.driver.find_element('xpath', '//*[@id="gridGroupWorkMan_Button' + str(i) + '"]').click()
+                time.sleep(0.5)
+            for i in range(0, int(fin)):
+                StartPage.driver.find_element('xpath', '//*[@id="gridGroupWorkMan_Button' + str(i) + '"]').click()
+                time.sleep(0.5)
+        else:
+            for i in range(int(start), int(fin)):
+                StartPage.driver.find_element('xpath', '//*[@id="gridGroupWorkMan_Button' + str(i) + '"]').click()
+                time.sleep(0.5)
+        time.sleep(1)
+        StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
+
+
+    def createWidgets(self):
+        # 創造可以用place的背景
+        self.background = tk.Canvas(self, height=800, width=800, bg='white').pack()
+        tk.Label(self, text='幾時誰上?', font=('KaiTi', 40), bg='white').place(x=350, y=25)
+        tk.Label(self, text='第幾項\n從0開始:', font=('KaiTi', 26), bg='white').place(x=25, y=100)
+        self.entry_day = tk.StringVar()
+        tk.Entry(self, bg='white', textvariable=self.entry_day, font=('KaiTi', 26)).place(x=230, y=100)
+        tk.Label(self, text='人\n用.分開:', font=('KaiTi', 26), bg='white').place(x=25, y=250)
+        self.entry_vac = tk.StringVar()
+        tk.Entry(self, bg='white', textvariable=self.entry_vac, font=('KaiTi', 26)).place(x=150, y=250)
+        tk.Label(self, text='車:', font=('KaiTi', 26), bg='white').place(x=25, y=400)
+        self.entry_out = tk.StringVar()
+        tk.Entry(self, bg='white', textvariable=self.entry_out, font=('KaiTi', 26)).place(x=150, y=400)
+        tk.Label(self, text='開始時間:', font=('KaiTi', 26), bg='white').place(x=25, y=550)
+        self.entry_cmd = ttk.Combobox(font=('KaiTi', 26), values=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                                        '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+                                        '21', '22', '23', '24'], width=5, height=26)
+        self.entry_cmd.place(x=200, y=550)
+        tk.Label(self, text='結束時間:', font=('KaiTi', 26), bg='white').place(x=400, y=550)
+        self.entry_fin = ttk.Combobox(font=('KaiTi', 26), values=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                                        '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+                                        '21', '22', '23', '24'], width=5, height=26)
+        self.entry_fin.place(x=580, y=550)
+        tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=700)
 
 
 if __name__ == "__main__":
