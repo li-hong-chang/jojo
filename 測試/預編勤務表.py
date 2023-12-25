@@ -217,7 +217,7 @@ class working(tk.Frame):
         elif car == '92':
             StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl1_chkManCar_10"]').click()
         else:
-            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl2_chkManCar_13"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl2_chkManCar_12"]').click()
         start = self.entry_cmd.get()
         fin = self.entry_fin.get()
         if int(fin) < int(start):
@@ -342,7 +342,7 @@ class leaving(tk.Frame):
         elif car == '92':
             StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl1_chkManCar_10"]').click()
         else:
-            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl2_chkManCar_13"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl2_chkManCar_12"]').click()
         start = self.entry_cmd.get()
         fin = self.entry_fin.get()
         if int(fin) < int(start):
