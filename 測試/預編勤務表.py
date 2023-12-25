@@ -125,6 +125,7 @@ class state(tk.Frame):
         try:
             StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]/option[3]').click()
+            time.sleep(1)
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
         # 打攻擊車
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[16]').click()
@@ -210,7 +211,7 @@ class working(tk.Frame):
         elif car == '16':
             StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl0_chkManCar_1"]').click()
         elif car == '31':
-            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl0_chkManCar_3"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl0_chkManCar_2"]').click()
         elif car == '93':
             StartPage.driver.find_element('xpath', '//*[@id="listCar_ctrl1_chkManCar_11"]').click()
         elif car == '92':
@@ -230,6 +231,7 @@ class working(tk.Frame):
             for i in range(int(start), int(fin)):
                 StartPage.driver.find_element('xpath', '//*[@id="gridGroupFightMan_Button' + str(i) + '"]').click()
                 time.sleep(0.5)
+        time.sleep(1)
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
 
