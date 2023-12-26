@@ -239,11 +239,13 @@ class working(tk.Frame):
                 StartPage.driver.find_element('xpath', '//*[@id="gridGroupFightMan_Button' + str(i) + '"]').click()
                 time.sleep(0.5)
         time.sleep(1)
+        self.entry_vac.set('')
+        self.entry_cmd.current(i)
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
 
 
@@ -314,12 +316,12 @@ class working(tk.Frame):
         tk.Label(self, text='開始時間:', font=('KaiTi', 26), bg='white').place(x=25, y=550)
         self.entry_cmd = ttk.Combobox(font=('KaiTi', 26), values=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
                                         '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-                                        '21', '22', '23', '24'], width=5, height=26)
+                                        '21', '22', '23', '24'], width=5)
         self.entry_cmd.place(x=200, y=550)
         tk.Label(self, text='結束時間:', font=('KaiTi', 26), bg='white').place(x=400, y=550)
         self.entry_fin = ttk.Combobox(font=('KaiTi', 26), values=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
                                         '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-                                        '21', '22', '23', '24'], width=5, height=26)
+                                        '21', '22', '23', '24'], width=5)
         self.entry_fin.place(x=580, y=550)
         tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=700)
         tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=650, y=700)
@@ -368,11 +370,13 @@ class leaving(tk.Frame):
                 StartPage.driver.find_element('xpath', '//*[@id="gridGroupWorkMan_Button' + str(i) + '"]').click()
                 time.sleep(0.5)
         time.sleep(1)
+        self.entry_vac.set('')
+        self.entry_cmd.current(i)
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
 
 
@@ -392,12 +396,12 @@ class leaving(tk.Frame):
         tk.Label(self, text='開始時間:', font=('KaiTi', 26), bg='white').place(x=25, y=550)
         self.entry_cmd = ttk.Combobox(font=('KaiTi', 26), values=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
                                         '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-                                        '21', '22', '23', '24'], width=5, height=26)
+                                        '21', '22', '23', '24'], width=5)
         self.entry_cmd.place(x=200, y=550)
         tk.Label(self, text='結束時間:', font=('KaiTi', 26), bg='white').place(x=400, y=550)
         self.entry_fin = ttk.Combobox(font=('KaiTi', 26), values=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
                                         '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-                                        '21', '22', '23', '24'], width=5, height=26)
+                                        '21', '22', '23', '24'], width=5)
         self.entry_fin.place(x=580, y=550)
         tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=700)
 
@@ -405,5 +409,3 @@ class leaving(tk.Frame):
 if __name__ == "__main__":
     app = SampleApp()
     app.mainloop()
-
-# //*[@id="gridGroupWorkMan_rdoItemName_0"]
