@@ -244,8 +244,10 @@ class working(tk.Frame):
         self.entry_cmd.current(i+1)
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
+        time.sleep(1)
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
+        time.sleep(1)
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
 
@@ -376,8 +378,10 @@ class leaving(tk.Frame):
         self.entry_cmd.current(i+1)
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
+        time.sleep(1)
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
+        time.sleep(1)
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
 
