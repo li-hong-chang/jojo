@@ -243,7 +243,8 @@ class working(tk.Frame):
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
-
+        StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
 
 
     def ntsp(self):
@@ -280,6 +281,7 @@ class working(tk.Frame):
             time.sleep(1)
             StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
+            time.sleep(1)
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[3]').click()
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
@@ -367,6 +369,8 @@ class leaving(tk.Frame):
                 time.sleep(0.5)
         time.sleep(1)
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
