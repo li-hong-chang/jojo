@@ -240,16 +240,12 @@ class working(tk.Frame):
                 time.sleep(0.5)
         time.sleep(1)
         self.entry_vac.set('')
-        self.entry_out.set('')
         self.entry_cmd.current(i+1)
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         time.sleep(1)
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
 
 
     def ntsp(self):
@@ -374,16 +370,12 @@ class leaving(tk.Frame):
                 time.sleep(0.5)
         time.sleep(1)
         self.entry_vac.set('')
-        self.entry_out.set('')
         self.entry_cmd.current(i+1)
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
         time.sleep(1)
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
         StartPage.driver.find_element('xpath', '//*[@id="listCar_btnClearCar"]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listFireMan_btnClearFireMan"]').click()
 
 
     def createWidgets(self):
