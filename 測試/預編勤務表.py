@@ -96,6 +96,10 @@ class state(tk.Frame):
         #輪休ing
         vac = self.entry_vac.get().split('.')
         try:
+            out.remove('402')
+        except:
+            pass
+        try:
             vac.remove('401')
         except:
             pass
@@ -107,6 +111,10 @@ class state(tk.Frame):
             pass
         else:
             out = self.entry_out.get().split('.')
+            try:
+                out.remove('402')
+            except:
+                pass
             try:
                 out.remove('401')
             except:
@@ -123,6 +131,9 @@ class state(tk.Frame):
             StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]/option[3]').click()
             time.sleep(1)
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[23]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+            time.sleep(1)
         # 打攻擊車
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[16]').click()
             time.sleep(1)
@@ -154,7 +165,7 @@ class state(tk.Frame):
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[3]').click()
             time.sleep(1)
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('93')
+            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('97')
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
             time.sleep(1)
             print(91)
@@ -265,9 +276,6 @@ class working(tk.Frame):
             StartPage.driver.find_element('xpath', '//*[@id="listItemType"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listItemType"]/option[3]').click()
             time.sleep(1)
-            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[18]').click()
-            time.sleep(1)
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[14]').click()
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
@@ -285,9 +293,10 @@ class working(tk.Frame):
             time.sleep(1)
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
             time.sleep(1)
-            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click ()
-            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('值班')
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[1]').click()
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
         except:
             print('離隊編組失敗')

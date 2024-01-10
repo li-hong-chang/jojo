@@ -21,7 +21,7 @@ class radio(tk.Frame):
         except:
             pass
         try:
-            b.remove('401')
+            b.remove('402')
         except:
             pass
         go = []
