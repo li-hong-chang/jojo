@@ -30,9 +30,9 @@ class StartPage(tk.Frame):
         self.grid()
         self.createWidgets()
         self.master.title('預編勤務表')
-        self.master.geometry("800x600")
-        self.master.minsize(800, 600)
-        self.master.maxsize(800, 600)
+        self.master.geometry("750x700")
+        self.master.minsize(750, 600)
+        self.master.maxsize(750, 600)
 
     def usr_login(self):
         # 獲取使用者輸入的usr_name和
@@ -66,13 +66,13 @@ class StartPage(tk.Frame):
 
     def createWidgets(self):
         # 創造可以用place的背景
-        self.background = tk.Canvas(self, height=600, width=800, bg='white').pack()
+        self.background = tk.Canvas(self, height=600, width=750, bg='white').pack()
         tk.Label(self, text='輸入', font=('KaiTi', 40), bg='white').place(x=380, y=25)
         tk.Label(self, text='位置:', font=('KaiTi', 26), bg='white').place(x=25, y=100)
         self.entry_usr_name = tk.StringVar()
         tk.Entry(self, bg='white', textvariable=self.entry_usr_name, font=('KaiTi', 26)).place(x=230, y=100)
         tk.Button(self, text='登入', bg='#ffcc69', font=('KaiTi', 20), command=self.usr_login).place(x=380, y=450)
-        tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=650, y=450)
+        tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=600, y=450)
 
 class state(tk.Frame):
     def __init__(self, master):
@@ -80,9 +80,9 @@ class state(tk.Frame):
         self.grid()
         self.createWidgets()
         self.master.title('預編勤務表')
-        self.master.geometry("780x780")
-        self.master.minsize(800, 800)
-        self.master.maxsize(800, 800)
+        self.master.geometry("700x700")
+        self.master.minsize(700, 700)
+        self.master.maxsize(700, 700)
 
     def day_create(self):
         StartPage.driver.find_element('xpath', '//*[@id="listDay"]').click()
@@ -185,7 +185,7 @@ class state(tk.Frame):
 
     def createWidgets(self):
         # 創造可以用place的背景
-        self.background = tk.Canvas(self, height=800, width=800, bg='white').pack()
+        self.background = tk.Canvas(self, height=700, width=700, bg='white').pack()
         tk.Label(self, text='誰休息?', font=('KaiTi', 40), bg='white').place(x=350, y=25)
         tk.Label(self, text='日期(幾號):', font=('KaiTi', 26), bg='white').place(x=25, y=100)
         self.entry_day = tk.StringVar()
@@ -200,7 +200,7 @@ class state(tk.Frame):
         tk.Label(self, text='帶隊官:', font=('KaiTi', 26), bg='white').place(x=25, y=550)
         self.entry_cmd = tk.StringVar()
         tk.Entry(self, bg='white', textvariable=self.entry_cmd, font=('KaiTi', 26)).place(x=150, y=550)
-        tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=650, y=700)
+        tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=600, y=620)
 
 class working(tk.Frame):
     def __init__(self, master):
@@ -208,9 +208,9 @@ class working(tk.Frame):
         self.grid()
         self.createWidgets()
         self.master.title('預編勤務表')
-        self.master.geometry("780x780")
-        self.master.minsize(800, 800)
-        self.master.maxsize(800, 800)
+        self.master.geometry("700x700")
+        self.master.minsize(700, 700)
+        self.master.maxsize(700, 700)
 
     def day_create(self):
         person = self.entry_vac.get().split('.')
@@ -256,57 +256,49 @@ class working(tk.Frame):
 
 
     def ntsp(self):
-        try:
-            StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]/option[2]').click()
-            time.sleep(1)
-            StartPage.driver.find_element('xpath', '//*[@id="listItemType"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="listItemType"]/option[2]').click()
-            time.sleep(1)
-            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
-            time.sleep(1)
-            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
-            time.sleep(1)
-            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('安檢系統建置、審核業務')
-            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
-            time.sleep(1)
-            StartPage.driver.find_element('xpath', '//*[@id="listItemType"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="listItemType"]/option[3]').click()
-            time.sleep(1)
-            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[14]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
-            time.sleep(1)
-            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[16]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
-            time.sleep(1)
-            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
-            time.sleep(1)
-            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[3]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
-            time.sleep(1)
-            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
-            time.sleep(1)
-            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[1]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
-        except:
-            print('離隊編組失敗')
+        StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]/option[2]').click()
+        time.sleep(1)
+        StartPage.driver.find_element('xpath', '//*[@id="listItemType"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemType"]/option[2]').click()
+        time.sleep(1)
+        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
+        time.sleep(1)
+        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
+        time.sleep(1)
+        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('安檢系統建置、審核業務')
+        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+        time.sleep(1)
+        StartPage.driver.find_element('xpath', '//*[@id="listItemType"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemType"]/option[3]').click()
+        time.sleep(1)
+        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[18]').click()
+        time.sleep(1)
+        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[16]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+        time.sleep(1)
+        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
+        time.sleep(1)
+        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[1]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+        time.sleep(1)
+        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[3]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
         self.destroy()
         self.master.switch_frame(leaving)
 
 
     def createWidgets(self):
         # 創造可以用place的背景
-        self.background = tk.Canvas(self, height=800, width=800, bg='white').pack()
+        self.background = tk.Canvas(self, height=700, width=700, bg='white').pack()
         tk.Label(self, text='幾時誰上?', font=('KaiTi', 40), bg='white').place(x=350, y=25)
         tk.Label(self, text='第幾項\n從0開始:', font=('KaiTi', 26), bg='white').place(x=25, y=100)
         self.entry_day = tk.StringVar()
@@ -327,8 +319,8 @@ class working(tk.Frame):
                                         '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
                                         '21', '22', '23', '24'], width=5)
         self.entry_fin.place(x=580, y=550)
-        tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=700)
-        tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=650, y=700)
+        tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=620)
+        tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=600, y=620)
 
 class leaving(tk.Frame):
     def __init__(self, master):
@@ -336,9 +328,9 @@ class leaving(tk.Frame):
         self.grid()
         self.createWidgets()
         self.master.title('預編勤務表')
-        self.master.geometry("780x780")
-        self.master.minsize(800, 800)
-        self.master.maxsize(800, 800)
+        self.master.geometry("700x700")
+        self.master.minsize(700, 700)
+        self.master.maxsize(700, 700)
 
     def day_create(self):
         person = self.entry_vac.get().split('.')
@@ -385,8 +377,8 @@ class leaving(tk.Frame):
 
     def createWidgets(self):
         # 創造可以用place的背景
-        self.background = tk.Canvas(self, height=800, width=800, bg='white').pack()
-        tk.Label(self, text='幾時誰上?', font=('KaiTi', 40), bg='white').place(x=350, y=25)
+        self.background = tk.Canvas(self, height=700, width=700, bg='white').pack()
+        tk.Label(self, text='誰能逃獄?', font=('KaiTi', 40), bg='white').place(x=350, y=25)
         tk.Label(self, text='第幾項\n從0開始:', font=('KaiTi', 26), bg='white').place(x=25, y=100)
         self.entry_day = tk.StringVar()
         tk.Entry(self, bg='white', textvariable=self.entry_day, font=('KaiTi', 26)).place(x=230, y=100)
@@ -406,7 +398,7 @@ class leaving(tk.Frame):
                                         '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
                                         '21', '22', '23', '24'], width=5)
         self.entry_fin.place(x=580, y=550)
-        tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=700)
+        tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=620)
 
 
 if __name__ == "__main__":
