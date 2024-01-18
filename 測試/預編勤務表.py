@@ -6,9 +6,9 @@ from selenium.webdriver.chrome.service import Service
 from tkinter import ttk
 
 
-c_mem = {'A': '0', 'B': '1', 'C': '2', 'D': '3', '101': '4', '102': '5', '103': '6', '104': '7', '105': '8', '106': '', '107': '9', '108': '10',
-      '109': '11', '110': '12', '111': '13', '112': '14', '113': '15', '201': '16', '202': '17', '203': '18', '204': '19', '205': '20', '206': '21',
-      '207': '22', '208': '23', '209': '24', '210': '25', '211': '26', '212': '28', '301': '29', '302': '30', '303': '31', '304': '32', '305': '33'}
+c_mem = {'A': '0', 'B': '1', 'C': '2', 'D': '3', '101': '4', '102': '5', '103': '6', '104': '7', '105': '8', '106': '9', '107': '10', '108': '11',
+      '109': '12', '110': '13', '111': '14', '112': '15', '113': '16', '201': '17', '202': '18', '203': '19', '204': '20', '205': '21', '206': '22',
+      '207': '23', '208': '24', '209': '25', '210': '26', '211': '27', '212': '28', '301': '29', '302': '30', '303': '31', '304': '32', '305': '33'}
 leader = {'A': '10', 'B': '5', 'C': '8', 'D': '11'}
 
 class SampleApp(tk.Tk):
@@ -38,7 +38,7 @@ class StartPage(tk.Frame):
         # 獲取使用者輸入的usr_name和
         url = self.entry_usr_name.get()
         usr_name = '洪文政'
-        usr_pass = 'Vv22962640..'
+        usr_pass = 'aA22962640'
         '''StartPage.name = usr_name'''
         my_option = webdriver.ChromeOptions()
         # my_option.add_argument('--incognito')
@@ -103,9 +103,12 @@ class state(tk.Frame):
             vac.remove('401')
         except:
             pass
-        for i in vac:
-            StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[2]').click()
+        try:
+            for i in vac:
+                StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
+                StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[2]').click()
+        except:
+            print('輪休失敗')
         # 外宿ing
         if self.entry_out.get() == '':
             pass
@@ -119,14 +122,14 @@ class state(tk.Frame):
                 out.remove('401')
             except:
                 pass
+        try:
             for i in out:
                 StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
                 StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[14]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="btnVacationSave"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listLeader"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listLeader"]/option[' + leader[self.entry_cmd.get()] + ']').click()
-        time.sleep(6)
-        try:
+            StartPage.driver.find_element('xpath', '//*[@id="btnVacationSave"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listLeader"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listLeader"]/option[' + leader[self.entry_cmd.get()] + ']').click()
+            time.sleep(6)
             StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]/option[3]').click()
             time.sleep(1)
@@ -179,7 +182,7 @@ class state(tk.Frame):
             time.sleep(1)
             print(92)
         except:
-            print('打車失敗')
+            print('修宿、帶隊官、打車失敗')
         self.destroy()
         self.master.switch_frame(working)
 
@@ -256,42 +259,52 @@ class working(tk.Frame):
 
 
     def ntsp(self):
-        StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]/option[2]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="listItemType"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listItemType"]/option[2]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('安檢系統建置、審核業務')
-        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[18]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[16]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="listItemType"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listItemType"]/option[3]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[1]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
-        time.sleep(1)
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[3]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+        try:
+            StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]/option[2]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="listItemType"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemType"]/option[2]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('安檢系統建置、審核業務')
+            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[18]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[16]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="listItemType"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemType"]/option[3]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="DropDownList1"]/option[5]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[1]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[3]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
+            time.sleep(1)
+            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
+            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('服務區查察')
+            StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
+        except:
+            print('服務區查察建置有錯')
         self.destroy()
         self.master.switch_frame(leaving)
 
