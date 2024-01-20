@@ -7,8 +7,8 @@ from tkinter import ttk
 
 
 c_mem = {'A': '0', 'B': '1', 'C': '2', 'D': '3', '101': '4', '102': '5', '103': '6', '104': '7', '105': '8', '106': '9', '107': '10', '108': '11',
-      '109': '12', '110': '13', '111': '14', '112': '15', '113': '16', '201': '17', '202': '18', '203': '19', '204': '20', '205': '21', '206': '22',
-      '207': '23', '208': '24', '209': '25', '210': '26', '211': '27', '212': '28', '301': '29', '302': '30', '303': '31', '304': '32', '305': '33'}
+      '109': '12', '110': '13', '111': '14', '112': '15', '113': '16', '114': '17', '201': '18', '202': '19', '203': '20', '204': '21', '205': '22', '206': '23',
+      '207': '24', '208': '25', '209': '26', '210': '27', '211': '28', '212': '28', '301': '29', '302': '30', '303': '31', '304': '32', '305': '33'}
 leader = {'A': '10', 'B': '5', 'C': '8', 'D': '11'}
 
 class SampleApp(tk.Tk):
@@ -91,8 +91,8 @@ class state(tk.Frame):
 
     def ntsp(self):
         StartPage.driver.find_element('xpath', '//*[@id="btnSetVacation"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_16"]/option[13]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[114] + '"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[114] + '"]/option[13]').click()
         #輪休ing
         vac = self.entry_vac.get().split('.')
         try:
