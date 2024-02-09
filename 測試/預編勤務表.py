@@ -7,9 +7,10 @@ from tkinter import ttk
 
 
 c_mem = {'A': '0', 'B': '1', 'C': '2', 'D': '3', '101': '4', '102': '5', '103': '6', '104': '7', '105': '8', '106': '9', '107': '10', '108': '11',
-      '109': '12', '110': '13', '111': '14', '112': '15', '113': '16', '114': '17', '201': '18', '202': '19', '203': '20', '204': '21', '205': '22', '206': '23',
-      '207': '24', '208': '25', '209': '26', '210': '27', '211': '28', '212': '28', '301': '29', '302': '30', '303': '31', '304': '32', '305': '33'}
-leader = {'A': '10', 'B': '5', 'C': '8', 'D': '11'}
+      '109': '12', '110': '13', '111': '14', '112': '15', '113': '16', '114': '17', '115': '18', '116': '19','201': '20', '202': '21', '203': '22',
+      '204': '23', '205': '24', '206': '25', '207': '26', '208': '27', '209': '28', '210': '29', '211': '30','301': '27', '302': '30', '303': '31',
+      '304': '32', '305': '33'}
+leader = {'A': '8', 'B': '3', 'C': '6', 'D': '9'}
 
 class SampleApp(tk.Tk):
     def __init__(self):
@@ -91,8 +92,8 @@ class state(tk.Frame):
 
     def ntsp(self):
         StartPage.driver.find_element('xpath', '//*[@id="btnSetVacation"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[114] + '"]').click()
-        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[114] + '"]/option[13]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem['116'] + '"]').click()
+        StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem['116'] + '"]/option[13]').click()
         #輪休ing
         vac = self.entry_vac.get().split('.')
         try:
@@ -122,13 +123,14 @@ class state(tk.Frame):
                 out.remove('401')
             except:
                 pass
-        try:
             for i in out:
                 StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
                 StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[14]').click()
             StartPage.driver.find_element('xpath', '//*[@id="btnVacationSave"]').click()
+        try:
             StartPage.driver.find_element('xpath', '//*[@id="listLeader"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listLeader"]/option[' + leader[self.entry_cmd.get()] + ']').click()
+            print('選完人囉')
             time.sleep(6)
             StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]/option[3]').click()
@@ -144,7 +146,6 @@ class state(tk.Frame):
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('11')
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
             time.sleep(1)
-            print(11)
         # 打水箱車
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[12]').click()
@@ -153,7 +154,6 @@ class state(tk.Frame):
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('16')
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
             time.sleep(1)
-            print(16)
         # 打31車
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[7]').click()
@@ -162,25 +162,22 @@ class state(tk.Frame):
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('31')
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
             time.sleep(1)
-            print(31)
         # 打91車
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[3]').click()
             time.sleep(1)
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('97')
+            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('92')
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
             time.sleep(1)
-            print(91)
         # 打92車
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listItemName"]/option[4]').click()
             StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').click()
             time.sleep(1)
-            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('92')
+            StartPage.driver.find_element('xpath', '//*[@id="txtItemName"]').send_keys('93')
             StartPage.driver.find_element('xpath', '//*[@id="btnAddItem"]').click()
             time.sleep(1)
-            print(92)
         except:
             print('修宿、帶隊官、打車失敗')
         self.destroy()
