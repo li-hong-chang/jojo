@@ -6,11 +6,8 @@ from selenium.webdriver.chrome.service import Service
 from tkinter import ttk
 
 
-c_mem = {'A': '0', 'B': '1', 'C': '2', 'D': '3', '101': '4', '102': '5', '103': '6', '104': '7', '105': '8', '106': '9', '107': '10', '108': '11',
-      '109': '12', '110': '13', '111': '14', '112': '15', '113': '16', '114': '17', '115': '18', '116': '19','201': '20', '202': '21', '203': '22',
-      '204': '23', '205': '24', '206': '25', '207': '26', '208': '27', '209': '28', '210': '29', '211': '30','301': '27', '302': '30', '303': '31',
-      '304': '32', '305': '33'}
-leader = {'A': '8', 'B': '3', 'C': '6', 'D': '9'}
+c_mem = {'A': '0', 'B': '1', 'C': '2', 'D': '3'}
+leader = {'A': '9', 'B': '3', 'C': '6', 'D': '10'}
 
 class SampleApp(tk.Tk):
     def __init__(self):
@@ -37,9 +34,15 @@ class StartPage(tk.Frame):
 
     def usr_login(self):
         # 獲取使用者輸入的usr_name和
-        url = self.entry_usr_name.get()
+        url = 'C:/Users/user/Desktop/勤務表小工具/勤務公示(假).exe'
+        hou = int(self.entry_usr_name.get()) + 1
         usr_name = '洪文政'
         usr_pass = 'aA22962640'
+        for i in range(101, hou):
+            c_mem[str(i)] = str(i - 97)
+        for j in range(201, 214):
+            i += 1
+            c_mem[str(j)] = str(i - 97)
         '''StartPage.name = usr_name'''
         my_option = webdriver.ChromeOptions()
         # my_option.add_argument('--incognito')
@@ -69,9 +72,9 @@ class StartPage(tk.Frame):
         # 創造可以用place的背景
         self.background = tk.Canvas(self, height=600, width=750, bg='white').pack()
         tk.Label(self, text='輸入', font=('KaiTi', 40), bg='white').place(x=380, y=25)
-        tk.Label(self, text='位置:', font=('KaiTi', 26), bg='white').place(x=25, y=100)
+        tk.Label(self, text='顏浩中番號\n或最後一般隊員番號:', font=('KaiTi', 26), bg='white').place(x=25, y=100)
         self.entry_usr_name = tk.StringVar()
-        tk.Entry(self, bg='white', textvariable=self.entry_usr_name, font=('KaiTi', 26)).place(x=230, y=100)
+        tk.Entry(self, bg='white', textvariable=self.entry_usr_name, font=('KaiTi', 26)).place(x=230, y=200)
         tk.Button(self, text='登入', bg='#ffcc69', font=('KaiTi', 20), command=self.usr_login).place(x=380, y=450)
         tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=600, y=450)
 
@@ -111,9 +114,7 @@ class state(tk.Frame):
         except:
             print('輪休失敗')
         # 外宿ing
-        if self.entry_out.get() == '':
-            pass
-        else:
+        if self.entry_out.get() != '':
             out = self.entry_out.get().split('.')
             try:
                 out.remove('402')
@@ -126,11 +127,10 @@ class state(tk.Frame):
             for i in out:
                 StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]').click()
                 StartPage.driver.find_element('xpath', '//*[@id="gridVacation_listVacationType_' + c_mem[i] + '"]/option[14]').click()
-            StartPage.driver.find_element('xpath', '//*[@id="btnVacationSave"]').click()
         try:
+            StartPage.driver.find_element('xpath', '//*[@id="btnVacationSave"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listLeader"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listLeader"]/option[' + leader[self.entry_cmd.get()] + ']').click()
-            print('選完人囉')
             time.sleep(6)
             StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]').click()
             StartPage.driver.find_element('xpath', '//*[@id="listGroupType"]/option[3]').click()
@@ -309,28 +309,28 @@ class working(tk.Frame):
     def createWidgets(self):
         # 創造可以用place的背景
         self.background = tk.Canvas(self, height=700, width=700, bg='white').pack()
+        tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=620)
+        tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=600, y=620)
         tk.Label(self, text='幾時誰上?', font=('KaiTi', 40), bg='white').place(x=350, y=25)
         tk.Label(self, text='第幾項\n從0開始:', font=('KaiTi', 26), bg='white').place(x=25, y=100)
         self.entry_day = tk.StringVar()
         tk.Entry(self, bg='white', textvariable=self.entry_day, font=('KaiTi', 26)).place(x=230, y=100)
-        tk.Label(self, text='人\n用.分開:', font=('KaiTi', 26), bg='white').place(x=25, y=250)
-        self.entry_vac = tk.StringVar()
-        tk.Entry(self, bg='white', textvariable=self.entry_vac, font=('KaiTi', 26)).place(x=150, y=250)
-        tk.Label(self, text='車:', font=('KaiTi', 26), bg='white').place(x=25, y=400)
+        tk.Label(self, text='車:', font=('KaiTi', 26), bg='white').place(x=25, y=250)
         self.entry_out = tk.StringVar()
-        tk.Entry(self, bg='white', textvariable=self.entry_out, font=('KaiTi', 26)).place(x=150, y=400)
-        tk.Label(self, text='開始時間:', font=('KaiTi', 26), bg='white').place(x=25, y=550)
-        self.entry_cmd = ttk.Combobox(font=('KaiTi', 26), values=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-                                        '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-                                        '21', '22', '23', '24'], width=5)
-        self.entry_cmd.place(x=200, y=550)
+        tk.Entry(self, bg='white', textvariable=self.entry_out, font=('KaiTi', 26)).place(x=150, y=250)
+        tk.Label(self, text='人\n用.分開:', font=('KaiTi', 26), bg='white').place(x=25, y=400)
+        self.entry_vac = tk.StringVar()
+        tk.Entry(self, bg='white', textvariable=self.entry_vac, font=('KaiTi', 26)).place(x=150, y=400)
         tk.Label(self, text='結束時間:', font=('KaiTi', 26), bg='white').place(x=400, y=550)
         self.entry_fin = ttk.Combobox(font=('KaiTi', 26), values=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
                                         '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
                                         '21', '22', '23', '24'], width=5)
         self.entry_fin.place(x=580, y=550)
-        tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=620)
-        tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=600, y=620)
+        tk.Label(self, text='開始時間:', font=('KaiTi', 26), bg='white').place(x=25, y=550)
+        self.entry_cmd = ttk.Combobox(font=('KaiTi', 26), values=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                                        '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+                                        '21', '22', '23', '24'], width=5)
+        self.entry_cmd.place(x=200, y=550)
 
 class leaving(tk.Frame):
     def __init__(self, master):
@@ -388,27 +388,28 @@ class leaving(tk.Frame):
     def createWidgets(self):
         # 創造可以用place的背景
         self.background = tk.Canvas(self, height=700, width=700, bg='white').pack()
+        tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=620)
+        tk.Button(self, text='下一步', bg='#ff0099', font=('KaiTi', 20), command=self.ntsp).place(x=600, y=620)
         tk.Label(self, text='誰能逃獄?', font=('KaiTi', 40), bg='white').place(x=350, y=25)
         tk.Label(self, text='第幾項\n從0開始:', font=('KaiTi', 26), bg='white').place(x=25, y=100)
         self.entry_day = tk.StringVar()
         tk.Entry(self, bg='white', textvariable=self.entry_day, font=('KaiTi', 26)).place(x=230, y=100)
-        tk.Label(self, text='人\n用.分開:', font=('KaiTi', 26), bg='white').place(x=25, y=250)
-        self.entry_vac = tk.StringVar()
-        tk.Entry(self, bg='white', textvariable=self.entry_vac, font=('KaiTi', 26)).place(x=150, y=250)
-        tk.Label(self, text='車:', font=('KaiTi', 26), bg='white').place(x=25, y=400)
+        tk.Label(self, text='車:', font=('KaiTi', 26), bg='white').place(x=25, y=250)
         self.entry_out = tk.StringVar()
-        tk.Entry(self, bg='white', textvariable=self.entry_out, font=('KaiTi', 26)).place(x=150, y=400)
-        tk.Label(self, text='開始時間:', font=('KaiTi', 26), bg='white').place(x=25, y=550)
-        self.entry_cmd = ttk.Combobox(font=('KaiTi', 26), values=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-                                        '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-                                        '21', '22', '23', '24'], width=5)
-        self.entry_cmd.place(x=200, y=550)
+        tk.Entry(self, bg='white', textvariable=self.entry_out, font=('KaiTi', 26)).place(x=150, y=250)
+        tk.Label(self, text='人\n用.分開:', font=('KaiTi', 26), bg='white').place(x=25, y=400)
+        self.entry_vac = tk.StringVar()
+        tk.Entry(self, bg='white', textvariable=self.entry_vac, font=('KaiTi', 26)).place(x=150, y=400)
         tk.Label(self, text='結束時間:', font=('KaiTi', 26), bg='white').place(x=400, y=550)
         self.entry_fin = ttk.Combobox(font=('KaiTi', 26), values=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
                                         '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
                                         '21', '22', '23', '24'], width=5)
         self.entry_fin.place(x=580, y=550)
-        tk.Button(self, text='打入', bg='#ffcc69', font=('KaiTi', 20), command=self.day_create).place(x=380, y=620)
+        tk.Label(self, text='開始時間:', font=('KaiTi', 26), bg='white').place(x=25, y=550)
+        self.entry_cmd = ttk.Combobox(font=('KaiTi', 26), values=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                                        '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+                                        '21', '22', '23', '24'], width=5)
+        self.entry_cmd.place(x=200, y=550)
 
 
 if __name__ == "__main__":
